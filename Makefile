@@ -1,2 +1,2 @@
 start:
-	nodemon app.js
+	nodemon bin/server.js
