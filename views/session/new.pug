@@ -1,0 +1,28 @@
+extends ../layout/app.pug
+
+block content
+    form(action="/user", method="post")
+        legend Регистрация
+            div 
+                label(for="") Логин 
+            div 
+                input(name="username" type="text")
+            div 
+                label(for="") Имя 
+            div 
+                input(name="firstName" type="text")
+            div 
+                label(for="") Фамилия 
+            div 
+                input(name="lastName" type="text")
+            div 
+                label(for="") Пароль 
+            div 
+                input(name="password" type="text")
+            div 
+                label(for="") Повторите пароль 
+            div 
+                input(name="replayPassword" type="text")
+            div 
+                input(type="button", value="Зарегистрироваться")
+        
