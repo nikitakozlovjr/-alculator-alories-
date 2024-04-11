@@ -22,5 +22,15 @@ router.get('/protein', (req, res) => {
     res.render('sections/protein', data)
 });
 
+router.get('/log', (req, res) => {
+    const data = {title: "Регистрация"}
+    res.render('session/new', data)
+});
+
+router.get('/entrance', (req, res) => {
+    const data = {title: "Регистрация"}
+    res.render('session/entrance', data)
+});
+
 
 export default router;
