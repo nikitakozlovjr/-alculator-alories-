@@ -3,14 +3,28 @@ import userRedirection from './routes/routes.redirection.js';
 import userRoutes from './routes/user.routes.js';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
+import session from 'express-session';
 import express from 'express';
+import sessionMidlware from './middleware/session.middleware.js';
 
 const app = Express();
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(methodOverride('_method'));
-app.use(express.json())
 
+app.use(methodOverride('_method'));
+
+app.use(express.json());
+
+app.use(session({
+    secret: 'secret key',
+    resave: false,
+    saveUninitialized: false,
+  }));
+
+
+app.use(sessionMidlware);
 app.set('view engine', 'pug');
+
+
 
 app.use("/api", userRoutes);
 app.use(userRedirection)
