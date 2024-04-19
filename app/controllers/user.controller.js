@@ -19,8 +19,14 @@ class UserController {
     async getUser(req, __res) {
         const username = req.params.username;
         const personData = await db.query('SELECT * FROM users WHERE username = $1', [username]);
-        
+
         return personData.rows[0];
+    };
+
+    async getUsers(__req, __res) {
+        const usersData = await db.query('SELECT * FROM users');
+
+        return usersData.rows;
     };
 
     async updateUsernameUser(req, __res) {
