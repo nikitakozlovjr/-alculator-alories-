@@ -1,7 +1,7 @@
 extends ../layout/app.pug
 
 block content
-    form(action="/user", method="post")
+    form(action="session/entrance", method="post")
         legend Вход
             div 
                 label(for="") Логин
@@ -11,5 +11,5 @@ block content
                 label(for="") Пароль
             div 
                 input(type="text", name="password") 
-            div 
-                input(type="button", value="Войти")
+            
+            button(type='submit') Войти

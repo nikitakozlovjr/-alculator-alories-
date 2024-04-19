@@ -1,7 +1,7 @@
 extends ../layout/app.pug
 
 block content
-    form(action="/user", method="post")
+    form(action="session/new", method="post")
         legend Регистрация
             div 
                 label(for="") Логин 
@@ -23,6 +23,6 @@ block content
                 label(for="") Повторите пароль 
             div 
                 input(name="replayPassword" type="text")
-            div 
-                input(type="button", value="Зарегистрироваться")
+
+            button(type='submit') Зарегистрироваться
         
