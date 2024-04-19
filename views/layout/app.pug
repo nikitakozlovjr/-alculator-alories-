@@ -7,8 +7,11 @@ head
 //-     include ../../css/style.css
 header.container-header
   h2.logo-text Клевер здоровья
-  a(href='/entrance') Войти
-  a(href='/log') Зарегистрироваться
+  if currentUser.isGuest()
+    a(href='/entrance') Войти
+    a(href='/log') Зарегистрироваться
+  else 
+    a(href='/profile') Мой профиль
 main.main
   nav.nav
     ul
