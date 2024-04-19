@@ -1,6 +1,7 @@
 import Express from 'express';
 import userRedirection from './routes/routes.redirection.js';
 import userRoutes from './routes/user.routes.js';
+import sessionRoutes from './routes/session.routes.js';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
 import session from 'express-session';
@@ -25,8 +26,8 @@ app.use(sessionMidlware);
 app.set('view engine', 'pug');
 
 
-
-app.use("/api", userRoutes);
-app.use(userRedirection)
+app.use('/session', sessionRoutes);
+app.use(userRoutes);
+app.use(userRedirection);
 
 export default app;
