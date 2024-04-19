@@ -1,0 +1,17 @@
+extends ../layout/app.pug
+
+block content 
+    h2 Пользователь #{currentUser.username}
+    h3 #{currentUser.firstName} #{currentUser.lastName}
+
+    div 
+        span 
+            a(href="#") Изменить логин
+        span 
+            a(href="#") Изменить фамилию
+        span 
+            a(href="#") Изменить пароль
+
+    div 
+        span 
+            a(href="#") Удалить пользователя
