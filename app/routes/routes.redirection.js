@@ -3,32 +3,44 @@ import Express from 'express'
 const router = new Express()
 
 router.get('/', (req, res) => {
-    const data = {title: "Главная"};
+    const { currentUser } = res.locals;
+    const data = {title: "Главная", currentUser};
     res.render('sections/main', data);
 })
 
 router.get('/calories', (req, res) => {
-    const data = {title: "Твои калории"};
+    const { currentUser } = res.locals;
+    const data = {title: "Калькулятор калорий", currentUser};
     res.render('sections/calories', data)
 })
 
 router.get('/balance', (req, res) => {
-    const data = {title: "Водяной баланс"};
+    const { currentUser } = res.locals;
+    const data = {title: "Водяной баланс", currentUser};
     res.render('sections/balance', data)
 })
 
 router.get('/protein', (req, res) => {
-    const data = {title: "Водяной баланс"};
+    const { currentUser } = res.locals;
+    const data = {title: "Расчет белка", currentUser};
     res.render('sections/protein', data)
 });
 
+router.get('/profile', (req, res) => {
+    const { currentUser } = res.locals;
+    const data = {title: "Профиль", currentUser};
+    res.render('sections/profile', data)
+})
+
 router.get('/log', (req, res) => {
-    const data = {title: "Регистрация"}
+    const { currentUser } = res.locals;
+    const data = {title: "Регистрация", currentUser};
     res.render('session/new', data)
 });
 
 router.get('/entrance', (req, res) => {
-    const data = {title: "Регистрация"}
+    const { currentUser } = res.locals;
+    const data = {title: "Вход", currentUser};
     res.render('session/entrance', data)
 });
 
