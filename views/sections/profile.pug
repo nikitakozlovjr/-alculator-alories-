@@ -13,5 +13,9 @@ block content
             a(href="#") Изменить пароль
 
     div 
-        span 
-            a(href="#") Удалить пользователя
+        form(action="session?_method=DELETE", method="post")
+            input(type="submit" value="Выйти")
+        
+        form(action="#" method="post")
+            input(type="submit" value="Удалить аккаунт") 
+        
