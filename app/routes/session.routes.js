@@ -35,7 +35,7 @@ router.post('/entrance', async (req, res) => {
 router.delete('/', (req, res) => {
     req.session.destroy(() => {
         res.redirect('/');
-    })
-})
+    });
+});
 
 export default router;
