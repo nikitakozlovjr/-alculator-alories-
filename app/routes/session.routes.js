@@ -38,4 +38,12 @@ router.delete('/', (req, res) => {
     });
 });
 
+router.delete('/deleteUser', async (req, res) => {
+    await new UserController().deleteUser(req, res);
+    
+    req.session.destroy(() => {
+        res.redirect('/');
+    })
+});
+
 export default router;
