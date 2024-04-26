@@ -85,8 +85,8 @@ class UserController {
         return updateDataUser.rows[0];
     };
     async deleteUser(req, __res) {
-        const username = req.params.username;
-
+        const username = req.session.username;
+        
         const deleteDataUser = await db.query(`
             DELETE FROM users
             WHERE username = $1

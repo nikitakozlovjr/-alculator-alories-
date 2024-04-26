@@ -27,7 +27,7 @@ app.set('view engine', 'pug');
 
 
 app.use('/session', sessionRoutes);
-app.use(userRoutes);
+app.use('/users', userRoutes);
 app.use(userRedirection);
 
 export default app;

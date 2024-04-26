@@ -35,7 +35,15 @@ router.post('/entrance', async (req, res) => {
 router.delete('/', (req, res) => {
     req.session.destroy(() => {
         res.redirect('/');
+    });
+});
+
+router.delete('/deleteUser', async (req, res) => {
+    await new UserController().deleteUser(req, res);
+    
+    req.session.destroy(() => {
+        res.redirect('/');
     })
-})
+});
 
 export default router;
