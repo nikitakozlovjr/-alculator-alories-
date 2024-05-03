@@ -5,12 +5,22 @@ block content
     h3 #{currentUser.firstName} #{currentUser.lastName}
 
     div 
-        span 
-            a(href="#") Изменить логин
-        span 
-            a(href="#") Изменить фамилию
-        span 
-            a(href="#") Изменить пароль
+        div
+            form(action="users/username?_method=PUT", method="post") 
+                input(type="text" name="newUsername" placeholder="Изменить логин")
+                input(type="submit", value="Изменить")
+        div
+            form(action="users/firstname?_method=PUT", method="post") 
+                input(type="text" name="firstName" placeholder="Изменить имя")
+                input(type="submit", value="Изменить")
+        div
+            form(action="", method="post") 
+                input(type="text" name="lastName" placeholder="Изменить фамилию")
+                input(type="submit", value="Изменить")
+        div
+            form(action="", method="post") 
+                input(type="text" name="password" placeholder="Изменить пароль")
+                input(type="submit", value="Изменить")
 
     div 
         form(action="session?_method=DELETE", method="post")
