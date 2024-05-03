@@ -1,0 +1,14 @@
+extends ../layout/app.pug
+
+block content
+    form(action="/posts", method="post")
+        div
+            label(for="title") Название поста
+                input(type="text", name="title" placeholder="Назови")
+        div
+            label(for="description") Краткое описание
+            input(type="text", name="description" placeholder="Опиши")
+        div
+            label(for="body") Пост 
+            textarea(name="body", cols="30", rows="10" placeholder="Твори")
+        input(type="submit" value="Создать")
