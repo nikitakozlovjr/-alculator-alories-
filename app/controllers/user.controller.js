@@ -17,7 +17,7 @@ class UserController {
     };
 
     async getUser(req, __res) {
-        const username = req.params.username;
+        const username = req.session.username;
         const personData = await db.query('SELECT * FROM users WHERE username = $1', [username]);
 
         return personData.rows[0];
@@ -30,8 +30,9 @@ class UserController {
     };
 
     async updateUsernameUser(req, __res) {
-        const username = req.params.username;
-        const {newUsername} = req.body
+        const username = req.session.username;
+        const newUsername = req.body.newUsername
+        req.session.username = newUsername;
 
         const updateDataUser = await db.query(`
             UPDATE users 
@@ -44,8 +45,8 @@ class UserController {
     };
 
     async updateFirstNameUser(req, __res) {
-        const username = req.params.username;
-        const {firstName} = req.body;
+        const username = req.session.username;
+        const firstName = req.body.firstName;
 
         const updateDataUser = await db.query(`
             UPDATE users 
@@ -58,8 +59,8 @@ class UserController {
     };
 
     async updateLastNameUser(req, __res) {
-        const username = req.params.username;
-        const {lastName} = req.body;
+        const username = req.session.username;
+        const lastName = req.body.lastName;
 
         const updateDataUser = await db.query(`
             UPDATE users 
@@ -71,8 +72,8 @@ class UserController {
         return updateDataUser.rows[0];
     };
     async updatePasswordUser(req, __res) {
-        const username = req.params.username;
-        const {password} = req.body;
+        const username = req.session.username;
+        const password = req.body.password;
         const newPassword = new Encrypt().hash(password);
 
         const updateDataUser = await db.query(`
