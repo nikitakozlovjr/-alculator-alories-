@@ -1,4 +1,5 @@
-import Express from 'express'
+import Express from 'express';
+import PostsController from '../controllers/post.controller.js';
 
 const router = new Express()
 
@@ -49,5 +50,13 @@ router.get('/postcreate', (req, res) => {
     const data = {title: "Создание поста", currentUser};
     res.render('sections/postCreate', data)
 });
+
+router.get('/postsusers', async (req, res) => {
+    const { currentUser } = res.locals;
+    const posts = await new PostsController().getPosts(req, res);
+    const data = {title: "Создание поста", currentUser, posts};
+    res.render('sections/usersPosts', data);
+});
+
 
 export default router;
