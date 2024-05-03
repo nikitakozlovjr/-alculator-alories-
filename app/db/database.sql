@@ -17,9 +17,11 @@ CREATE TABLE calculations (
 
 CREATE TABLE users_posts (
     id SERIAL PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    description VARCHAR(50) NOT NULL,
     body text NOT NULL,
-    username VARCHAR(255),
-    FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
+    author VARCHAR(255),
+    FOREIGN KEY (author) REFERENCES users(username) ON DELETE CASCADE
 );
 
 CREATE TABLE doctor_posts (
