@@ -1,0 +1,11 @@
+extends ../layout/app.pug
+
+block content
+    for post in posts
+        div 
+            h3 #{post.title} 
+            p #{post.description}
+            span Автор:#{post.author}
+            form(action=`/posts/${post.id}`, method="get") 
+                input(type="submit", value="Читать")
+            
