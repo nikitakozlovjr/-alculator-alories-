@@ -1,36 +1,102 @@
-doctype html
-head
-  meta(charset='UTF-8')
+html
+  head
+    meta(charset="UTF-8")
+    title #{title}
+    link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous")
+  body
+    .container-fluid
+      .row.flex-nowrap
+        .col-auto.col-md-3.col-xl-2.px-sm-2.px-0.bg-dark
+          .d-flex.flex-column.align-items-center.align-items-sm-start.px-3.pt-2.text-white.min-vh-100
+            a.d-flex.align-items-center.pb-3.mb-md-0.me-md-auto.text-white.text-decoration-none(href='/')
+              span.fs-5.d-none.d-sm-inline Клевер здоровья
+            ul#menu.nav.nav-pills.flex-column.mb-sm-auto.mb-0.align-items-center.align-items-sm-start
+              li
+                a.nav-link.px-0.align-middle(href='#submenu1', data-bs-toggle='collapse')
+                  i.fs-4.bi-speedometer2
+                  |  
+                  span.ms-1.d-none.d-sm-inline Главная
+              li
+                a.nav-link.px-0.align-middle(href='#submenu1', data-bs-toggle='collapse')
+                  i.fs-4.bi-speedometer2
+                  |  
+                  span.ms-1.d-none.d-sm-inline Советы пользователей
+              li
+                a.nav-link.px-0.align-middle(href='#submenu1', data-bs-toggle='collapse')
+                  i.fs-4.bi-speedometer2
+                  |  
+                  span.ms-1.d-none.d-sm-inline Расчет калориев
+              li
+                a.nav-link.px-0.align-middle(href='#submenu1', data-bs-toggle='collapse')
+                  i.fs-4.bi-speedometer2
+                  |  
+                  span.ms-1.d-none.d-sm-inline Расчет белка
+              li
+                a.nav-link.px-0.align-middle(href='#submenu1', data-bs-toggle='collapse')
+                  i.fs-4.bi-speedometer2
+                  |  
+                  span.ms-1.d-none.d-sm-inline Расчет баланса воды
+              li
+                a.nav-link.px-0.align-middle(href='#submenu1', data-bs-toggle='collapse')
+                  i.fs-4.bi-speedometer2
+                  |  
+                  span.ms-1.d-none.d-sm-inline Мои расчеты
+            hr
+            .dropdown.pb-4
+            if currentUser.isGuest()
+              a.btn.text-primary.border.w-100.mb-2(href='/entrance') Войти
+              a.btn.text-primary.border.w-100.mb-3(href='/log') Зарегистрироваться
+            else
+              a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.mb-3(href='/profile', data-bs-toggle='dropdown', aria-expanded='false')
+                img.rounded-circle(src='https://ob-kassa.ru/content/front/buhoskol_tmp1/images/reviews-icon.jpg', alt='hugenerd', width='30', height='30')
+                span.d-none.d-sm-inline.mx-1 Профиль            
+        .col.py-3
+          block content
+
+
+
+
+
+
+
+
+
+
+//- head
+//-   meta(charset='UTF-8')
   
-  title Клевер здоровья - #{title}
-//-   style
-//-     include ../../css/style.css
-header.container-header
-  h2.logo-text Клевер здоровья
-  if currentUser.isGuest()
-    a(href='/entrance') Войти
-    a(href='/log') Зарегистрироваться
-  else 
-    a(href='/profile') Мой профиль
-main.main
-  nav.nav
-    ul
-      li
-        a(href='/') Главная
-      li
-        a(href='#') Советы врачей
-      li
-        a(href='/postsusers') Советы пользователей
-      li
-        a(href='/calories') Счетчик калориев
-      li
-        a(href='/balance') Расчет водяного баланса
-      li
-        a(href='/protein') Счетчик белка
-      li
-        a(href='#') История расчетов
-  block content
-  footer
-    a Контакты
-    a Поддержать проект
-    a О нас
+//-   title Клевер здоровья - #{title}
+//-   link(href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous")
+//-   div.container
+//-     header.row
+//-       div.col-9
+//-         h2 Клевер здоровья
+//-       div.col-3
+//-         if currentUser.isGuest()
+//-           a.btn.btn-primary(href='/entrance') Войти
+//-           a.btn.btn-primary(href='/log') Зарегистрироваться
+//-         else 
+//-           a.btn.btn-primary(href='/profile') Мой профиль
+//-   main.container
+//-     div.row
+//-       nav.col-4.navbar 
+//-         div.container-fluid
+//-           a.btn.btn-primary.navbar-brand(href='/') Главная
+//-         div.container-fluid
+//-           a.btn.btn-primary.navbar-brand(href='#') Советы врачей
+//-         div.container-fluid
+//-           a.btn.btn-primary.navbar-brand(href='/postsusers') Советы пользователей
+//-         div.container-fluid
+//-           a.btn.btn-primary.navbar-brand(href='/calories') Счетчик калориев
+//-         div.container-fluid
+//-           a.btn.btn-primary.navbar-brand(href='/balance') Расчет водяного баланса
+//-         div.container-fluid
+//-           a.btn.btn-primary.navbar-brand(href='/protein') Счетчик белка
+//-         div.container-fluid
+//-           a.btn.btn-primary.navbar-brand(href='#') История расчетов
+//-       div.col-8
+//-         block content
+//-   footer
+//-     a Контакты
+//-     a Поддержать проект
+//-     a О нас
