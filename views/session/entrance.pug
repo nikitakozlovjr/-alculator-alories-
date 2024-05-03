@@ -1,15 +1,18 @@
 extends ../layout/app.pug
 
 block content
-    form(action="session/entrance", method="post")
-        legend Вход
-            div 
-                label(for="") Логин
-            div 
-                input(type="text", name="username") 
-            div 
-                label(for="") Пароль
-            div 
-                input(type="text", name="password") 
-            
-            button(type='submit') Войти
+    div.container
+        div.row
+            form.col(action="session/entrance", method="post")
+                .d-flex.align-items-center.mb-3.pb-1
+                    i.fas.fa-cubes.fa-2x.me-3(style='color: #ff6219;')
+                    span.h1.fw-bold.mb-0 Вход
+                h5.fw-normal.mb-3.pb-3(style='letter-spacing: 1px;') Войдите в свой аккаунт
+                .form-outline.mb-4(data-mdb-input-init='')
+                    input#form2Example17.form-control.form-control-lg(type='text' name="username")
+                    label.form-label(for='form2Example17') Логин
+                .form-outline.mb-4(data-mdb-input-init='')
+                    input#form2Example27.form-control.form-control-lg(type='text' name="password")
+                    label.form-label(for='form2Example27') Пароль
+                .pt-1.mb-4
+                    button.btn.btn-dark.btn-lg.btn-block(data-mdb-button-init='', data-mdb-ripple-init='', type='submit') Войти
