@@ -44,5 +44,10 @@ router.get('/entrance', (req, res) => {
     res.render('session/entrance', data)
 });
 
+router.get('/postcreate', (req, res) => {
+    const { currentUser } = res.locals;
+    const data = {title: "Создание поста", currentUser};
+    res.render('sections/postCreate', data)
+});
 
 export default router;
