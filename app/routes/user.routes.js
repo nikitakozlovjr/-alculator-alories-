@@ -5,16 +5,26 @@ const router = new Express();
 
 router.post('/', await new UserController().createUser);
 
-router.get('/:username', await new UserController().getUsers);
+router.get('/', await new UserController().getUsers);
 
-router.put('/:username/firstname', await new UserController().updateFirstNameUser);
+router.put('/username', async (req, res) => {
+    await new UserController().updateUsernameUser(req, res);
+    res.redirect('/profile');
+});
 
-router.put('/:username/lastname', await new UserController().updateLastNameUser);
+router.put('/firstname', async (req, res) => {
+    await new UserController().updateFirstNameUser(req, res);
+    res.redirect('/profile');
+});
 
-router.put('/:username/username', await new UserController().updateUsernameUser);
+router.put('/lastname', async (req, res) => {
+    await new UserController().updateLastNameUser(req, res);
+    res.redirect('/profile');
+});
 
-router.put('/:username/password', await new UserController().updatePasswordUser);
-
-router.delete('/:username', await new UserController().deleteUser);
+router.put('/password', async (req, res) => {
+    await new UserController().updatePasswordUser(req, res);
+    res.redirect('/profile');
+});
 
 export default router;
