@@ -1,28 +1,53 @@
 extends ../layout/app.pug
 
 block content
-    form(action="session/new", method="post")
-        legend Регистрация
-            div 
-                label(for="") Логин 
-            div 
-                input(name="username" type="text")
-            div 
-                label(for="") Имя 
-            div 
-                input(name="firstName" type="text")
-            div 
-                label(for="") Фамилия 
-            div 
-                input(name="lastName" type="text")
-            div 
-                label(for="") Пароль 
-            div 
-                input(name="password" type="text")
-            div 
-                label(for="") Повторите пароль 
-            div 
-                input(name="replayPassword" type="text")
+    div.container
+        div.row
+            form.col(action="session/new", method="post")
+                .d-flex.align-items-center.mb-3.pb-1
+                    i.fas.fa-cubes.fa-2x.me-3(style='color: #ff6219;')
+                    span.h1.fw-bold.mb-0 Регистрация
+                h5.fw-normal.mb-3.pb-3(style='letter-spacing: 1px;') Зполните данные для регистрации
+                .form-outline.mb-4(data-mdb-input-init='')
+                    input#form2Example17.form-control.form-control-lg(type='text' name="username")
+                    label.form-label(for='form2Example17') Логин
+                .form-outline.mb-4(data-mdb-input-init='')
+                    input#form2Example17.form-control.form-control-lg(type='text' name="firstName")
+                    label.form-label(for='form2Example17') Имя
+                .form-outline.mb-4(data-mdb-input-init='')
+                    input#form2Example17.form-control.form-control-lg(type='text' name="lastName")
+                    label.form-label(for='form2Example17') Фамилия
+                .form-outline.mb-4(data-mdb-input-init='')
+                    input#form2Example17.form-control.form-control-lg(type='text' name="password")
+                    label.form-label(for='form2Example17') Пароль
+                .form-outline.mb-4(data-mdb-input-init='')
+                    input#form2Example27.form-control.form-control-lg(type='text' name="replayPassword")
+                    label.form-label(for='form2Example27') Повторите пароль
+                .pt-1.mb-4
+                    button.btn.btn-dark.btn-lg.btn-block(data-mdb-button-init='', data-mdb-ripple-init='', type='submit') Зарегистрироваться
 
-            button(type='submit') Зарегистрироваться
+    //- form(action="session/new", method="post")
+    //-     legend Регистрация
+    //-         div 
+    //-             label(for="") Логин 
+    //-         div 
+    //-             input(name="username" type="text")
+    //-         div 
+    //-             label(for="") Имя 
+    //-         div 
+    //-             input(name="firstName" type="text")
+    //-         div 
+    //-             label(for="") Фамилия 
+    //-         div 
+    //-             input(name="lastName" type="text")
+    //-         div 
+    //-             label(for="") Пароль 
+    //-         div 
+    //-             input(name="password" type="text")
+    //-         div 
+    //-             label(for="") Повторите пароль 
+    //-         div 
+    //-             input(name="replayPassword" type="text")
+
+    //-         button(type='submit') Зарегистрироваться
         
