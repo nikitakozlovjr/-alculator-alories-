@@ -14,11 +14,11 @@ block content
                 input(type="text" name="firstName" placeholder="Изменить имя")
                 input(type="submit", value="Изменить")
         div
-            form(action="", method="post") 
+            form(action="users/lastname?_method=PUT", method="post") 
                 input(type="text" name="lastName" placeholder="Изменить фамилию")
                 input(type="submit", value="Изменить")
         div
-            form(action="", method="post") 
+            form(action="users/password?_method=PUT", method="post") 
                 input(type="text" name="password" placeholder="Изменить пароль")
                 input(type="submit", value="Изменить")
 
