@@ -1,6 +1,7 @@
 import Express from 'express';
 import userRedirection from './routes/routes.redirection.js';
 import userRoutes from './routes/user.routes.js';
+import postRouter from './routes/post.routes.js';
 import sessionRoutes from './routes/session.routes.js';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
@@ -28,6 +29,7 @@ app.set('view engine', 'pug');
 
 app.use('/session', sessionRoutes);
 app.use('/users', userRoutes);
+app.use('/posts', postRouter);
 app.use(userRedirection);
 
 export default app;
