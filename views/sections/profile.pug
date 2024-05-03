@@ -22,7 +22,11 @@ block content
                 input(type="text" name="password" placeholder="Изменить пароль")
                 input(type="submit", value="Изменить")
 
+
     div 
+        form(action="postcreate", method="get")
+            input(type="submit" value="Создать пост")
+
         form(action="session?_method=DELETE", method="post")
             input(type="submit" value="Выйти")
         
