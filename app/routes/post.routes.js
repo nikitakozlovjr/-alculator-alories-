@@ -12,7 +12,7 @@ router.get('/:id', async (req, res) => {
     const { currentUser } = res.locals;
     const post = await new PostController().getPost(req, res);
     const data = {title: `${post.title}`, currentUser, post};
-    res.render('sections/post', data);
+    res.render('posts/show', data);
 });
 
 router.post('/search', async (req, res) => {
@@ -25,7 +25,7 @@ router.post('/search', async (req, res) => {
         posts = await new PostController().searchPost(req, res);
     };
     const data = {title: "Результат поиска", currentUser, posts};
-    res.render('sections/usersPosts', data);
+    res.render('posts/usersPosts', data);
 });
 
 export default router;

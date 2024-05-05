@@ -30,7 +30,7 @@ router.get('/protein', (req, res) => {
 router.get('/profile', (req, res) => {
     const { currentUser } = res.locals;
     const data = {title: "Профиль", currentUser};
-    res.render('sections/profile', data)
+    res.render('users/profile', data)
 })
 
 router.get('/log', (req, res) => {
@@ -48,14 +48,14 @@ router.get('/entrance', (req, res) => {
 router.get('/postcreate', (req, res) => {
     const { currentUser } = res.locals;
     const data = {title: "Создание поста", currentUser};
-    res.render('sections/postCreate', data)
+    res.render('posts/postCreate', data)
 });
 
 router.get('/postsusers', async (req, res) => {
     const { currentUser } = res.locals;
     const posts = await new PostsController().getPosts(req, res);
-    const data = {title: "Создание поста", currentUser, posts};
-    res.render('sections/usersPosts', data);
+    const data = {title: "Советы пользователей", currentUser, posts};
+    res.render('posts/usersPosts', data);
 });
 
 
