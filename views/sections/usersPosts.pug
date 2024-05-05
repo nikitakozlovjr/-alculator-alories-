@@ -1,11 +1,18 @@
 extends ../layout/app.pug
 
 block content
-    for post in posts
-        div 
-            h3 #{post.title} 
-            p #{post.description}
-            span Автор:#{post.author}
-            form(action=`/posts/${post.id}`, method="get") 
-                input(type="submit", value="Читать")
+    form(action="/posts/search", method="post") 
+        input(type="text", name="searchParam" placholder="Поиск")
+        input(type="submit", value="Поиск")
+    
+    if posts.length === 0
+        p По вашему запросу ничего не найдено
+    else
+        for post in posts
+            div 
+                h3 #{post.title} 
+                p #{post.description}
+                span Автор:#{post.author}
+                form(action=`/posts/${post.id}`, method="get") 
+                    input(type="submit", value="Читать")
             
