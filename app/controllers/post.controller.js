@@ -29,6 +29,18 @@ class PostsController {
 
         return postData.rows[0];
     };
+
+    async searchPost(req, __res) {
+        const { searchParam } = req.body;
+        const searchPosts = await db.query(`
+            SELECT *
+            FROM users_posts
+            WHERE LOWER(title) LIKE '%'||$1||'%'
+            `, [searchParam]
+        );
+
+        return searchPosts.rows;
+    }
 }
 
 export default PostsController;
