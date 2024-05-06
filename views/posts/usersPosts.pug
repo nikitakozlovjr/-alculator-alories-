@@ -11,10 +11,9 @@ block content
         p По вашему запросу ничего не найдено
     else
         for post in posts
-            div 
-                h3 #{post.title} 
-                p #{post.description}
-                span Автор:#{post.author}
-                form(action=`/posts/${post.id}`, method="get") 
-                    input(type="submit", value="Читать")
-            
+            div.card.mb-3
+                div.card-header.text-primary.fw-normal.fs-3 #{post.title}
+                div.card-body
+                    h5.card-title #{post.description}
+                    p.card-text Автор: #{post.author}
+                    a.btn.btn-primary(href=`/posts/${post.id}`) Читать 
