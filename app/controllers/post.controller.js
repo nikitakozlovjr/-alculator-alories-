@@ -31,7 +31,7 @@ class PostsController {
     };
 
     async searchPost(req, __res) {
-        const { searchParam } = req.body;
+        const searchParam = req.body.searchParam.toLowerCase();
         const searchPosts = await db.query(`
             SELECT *
             FROM users_posts
