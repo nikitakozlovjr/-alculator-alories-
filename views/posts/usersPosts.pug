@@ -2,8 +2,10 @@ extends ../layout/app.pug
 
 block content
     form(action="/posts/search", method="post") 
-        input(type="text", name="searchParam" placholder="Поиск")
-        input(type="submit", value="Поиск")
+        div.input-group.mb-3 
+            input.form-control(type="text" name="searchParam" placeholder="Поиск" aria-label="Recipient's username" aria-describedby="button-addon2")
+            button.btn.btn-outline-secondary(type="submit" id="button-addon2") Найти
+
     
     if posts.length === 0
         p По вашему запросу ничего не найдено
