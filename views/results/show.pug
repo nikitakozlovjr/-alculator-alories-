@@ -1,17 +1,36 @@
 extends ../layout/app.pug
 
 block content 
-    div 
-        div 
-            h3 Норма калориев для поддержания веса #{calculations.normal}
-        div 
-            h3 Норма калориев для снижения веса #{calculations.low}
-        div 
-            h3 Норма калориев для набора веса #{calculations.more}
+    .card.mb-3
+        .card-header.text-primary.fw-normal.fs-3 Поддержание веса
+        .card-body 
+            p.card-text.fs-5
+                | Для того, чтобы оставаться в такой же форме Вам требуется
+                span.fs-5.text-primary  #{calculations.normal}
+                |  калориев в день
+    
+    .card.mb-3
+        .card-header.text-primary.fw-normal.fs-3 Снижение веса
+        .card-body 
+            p.card-text.fs-5
+                | Для того, чтобы похудеть Вам требуется употрелять не выше 
+                span.fs-5.text-primary  #{calculations.low}
+                |  калориев в день
+
+    .card.mb-3 
+        .card-header.text-primary.fw-normal.fs-3 Набор веса
+        .card-body 
+            p.card-text.fs-5
+                | Для того, чтобы набрать вес Вам требуется
+                span.fs-5.text-primary  #{calculations.more}
+                |  калориев в день
+    
     if currentUser.isGuest()
-        p Сохранять расчеты могут только авторизованные пользователи
-        a(href="/entrance") Войти
-        a(href="/log") Зарегистрироваться 
+        p.fs-5.text-danger Сохранять расчеты могут только авторизованные пользователи
+        a.btn.btn-primary.btn-lg(href="/entrance" style="margin-right: 10px;") Войти
+        a.btn.btn-secondary.btn-lg(href="/log") Зарегистрироваться 
     else 
         form(action=`/calories/save/?normal=${calculations.normal}&low=${calculations.low}&more=${calculations.more}`, method="post")
-            button(type="submit") Сохранить расчет 
+            button.btn.btn-dark.btn-lg.btn-block(type="submit" style="margin-right: 10px;") Сохранить расчет
+            a.btn.btn-danger.btn-lg(href="/calories") Не сохранять
+            
