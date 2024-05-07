@@ -9,9 +9,9 @@ CREATE TABLE calculations (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     username VARCHAR(255),
-    drop_result INT NOT NULL,
-    keep_result INT NOT NULL,
-    set_result INT NOT NULL,
+    normal INT NOT NULL,
+    low INT NOT NULL,
+    more INT NOT NULL,
     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
 );
 
@@ -22,10 +22,4 @@ CREATE TABLE users_posts (
     body text NOT NULL,
     author VARCHAR(255),
     FOREIGN KEY (author) REFERENCES users(username) ON DELETE CASCADE
-);
-
-CREATE TABLE doctor_posts (
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255) NOT NULL,
-    body text NOT NULL
 );
