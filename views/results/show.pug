@@ -1,10 +1,17 @@
 extends ../layout/app.pug
 
 block content 
+    div 
+        div 
+            h3 Норма калориев для поддержания веса #{calculations.normal}
+        div 
+            h3 Норма калориев для снижения веса #{calculations.low}
+        div 
+            h3 Норма калориев для набора веса #{calculations.more}
     if currentUser.isGuest()
         p Сохранять расчеты могут только авторизованные пользователи
         a(href="/entrance") Войти
         a(href="/log") Зарегистрироваться 
     else 
-        form(action="#", method="post")
+        form(action=`/calories/save/?normal=${calculations.normal}&low=${calculations.low}&more=${calculations.more}`, method="post")
             button(type="submit") Сохранить расчет 
