@@ -69,6 +69,11 @@ const app = () => {
             render(state);
         })
     });
+
+    elements.reset.addEventListener('click', () => {
+        state.validate = false;
+        render(state);
+    });
 };
 
 app()
