@@ -1,4 +1,5 @@
 import Express from 'express';
+import ResultController from '../controllers/result.controller.js';
 import activeCoefficients from '../utils/calories/activeCoefficients.js';
 import genderCoefficients from '../utils/calories/genderCoefficients.js';
 import getCalculation from '../utils/calories/getCalculation.js';
@@ -15,11 +16,9 @@ router.post('/calculation', (req, res) => {
     res.render('results/show', data)
 });
 
-router.post('/save', (req, res) => {
-    const { normal, low, more } = req.query;
-    console.log(parseInt(normal))
-    console.log(parseInt(low))
-    console.log(parseInt(more))
+router.post('/save', async (req, res) => {
+    req.query.name = 'calories';
+    await new ResultController().saveResult(req, res);
     res.redirect('/')
 })
 
