@@ -3,78 +3,82 @@ extends ../layout/app.pug
 block content 
     article
         h1
-            | &Scy;&chcy;&iocy;&tcy;&chcy;&icy;&kcy; &kcy;&acy;&lcy;&ocy;&rcy;&icy;&jcy;
+            | Счетчик калориев
         form.formParam(name='counter', action='#', method='post')
-            h2
-                | &Pcy;&ocy;&lcy;
+            legend
+                | Пол
             ul(data-name='gender')
                 li
                     input(type='radio', name='gender', data-gender='man', checked='checked')
                     label
-                        | &Mcy;&ucy;&zhcy;&chcy;&icy;&ncy;&acy;
+                        | Мужчина
                 li
                     input(type='radio', name='gender', data-gender='women')
                     label
-                    | &ZHcy;&iecy;&ncy;&shchcy;&icy;&ncy;&acy;
+                    | Женщина
             fieldset
                 legend
-                    | &Fcy;&icy;&zcy;&icy;&chcy;&iecy;&scy;&kcy;&icy;&iecy; &pcy;&acy;&rcy;&acy;&mcy;&iecy;&tcy;&rcy;&ycy;
+                    | Физические параметры
                 div
-                    label &Vcy;&ocy;&zcy;&rcy;&acy;&scy;&tcy;
-                    span &lcy;&iecy;&tcy;
+                    label Возраст 
+                    span  (лет)
                 div
                     input(name='age', type='text', placeholder='0')
+                    
                 div
-                    label &Rcy;&ocy;&scy;&tcy;
-                    span &scy;&mcy;
+                    label Рост
+                    span  (см)
                 div
                     input(name='height', type='text', placeholder='0')
                 div
-                    label &Vcy;&iecy;&scy;
-                    span &kcy;&gcy;
+                    label Вес
+                    span  (кг)
                 div
                     input(name='weight', type='text', placeholder='0')
             fieldset
                 legend
-                    | &Fcy;&icy;&zcy;&icy;&chcy;&iecy;&scy;&kcy;&acy;&yacy; &acy;&kcy;&tcy;&icy;&vcy;&ncy;&ocy;&scy;&tcy;&softcy;
+                    | Физическая активность
                 ul
                     li
                         div
                             input.active(name='active', type='radio', data-active='min', checked='checked')
                             label
-                                | &Mcy;&icy;&ncy;&icy;&mcy;&acy;&lcy;&softcy;&ncy;&acy;&yacy;
+                                | Минимальная
                             p
-                                | &Scy;&icy;&dcy;&yacy;&chcy;&acy;&yacy; &rcy;&acy;&bcy;&ocy;&tcy;&acy; &icy; &ncy;&iecy;&tcy; &fcy;&icy;&zcy;&icy;&chcy;&iecy;&scy;&kcy;&icy;&khcy; &ncy;&acy;&gcy;&rcy;&ucy;&zcy;&ocy;&kcy;
+                                | Сидячая работа и нет нагрузок
                     li
                         div
                             input(name='active', type='radio', data-active='low', checked='checked')
                             label
-                                | &Ncy;&icy;&zcy;&kcy;&acy;&yacy;
+                                | Низкая
                             p
-                                | &Rcy;&iecy;&dcy;&kcy;&icy;&iecy;, &ncy;&iecy;&rcy;&iecy;&gcy;&ucy;&lcy;&yacy;&rcy;&ncy;&ycy;&iecy; &tcy;&rcy;&iecy;&ncy;&icy;&rcy;&ocy;&vcy;&kcy;&icy;, &acy;&kcy;&tcy;&icy;&vcy;&ncy;&ocy;&scy;&tcy;&softcy; &vcy; &bcy;&ycy;&tcy;&ucy;
+                                | Редкие нерегулярные тренировки, активность в быту
                     li
                         div
                             input(name='active', type='radio', data-active='average')
                             label
-                                | &Scy;&rcy;&iecy;&dcy;&ncy;&yacy;&yacy;
+                                | Средняя
                             p
-                                | &Tcy;&rcy;&iecy;&ncy;&icy;&rcy;&ocy;&vcy;&kcy;&icy; 3-5 &rcy;&acy;&zcy; &vcy; &ncy;&iecy;&dcy;&iecy;&lcy;&yucy;
+                                | Тренировки 3 - 5 раз в неделю
                     li
                         div
                             input(name='active', type='radio', data-active='high')
                             label
-                                | &Vcy;&ycy;&scy;&ocy;&kcy;&acy;&yacy;
+                                | Высокая
                             p
-                                | &Tcy;&rcy;&iecy;&ncy;&icy;&rcy;&ocy;&vcy;&kcy;&icy; 6-7 &rcy;&acy;&zcy; &vcy; &ncy;&iecy;&dcy;&iecy;&lcy;&yucy;
+                                | Тренировки 6 - 7 раз в неделю
                     li
                         div
                             input(name='active', type='radio', data-active='huge')
                             label
-                                | &Ocy;&chcy;&iecy;&ncy;&softcy; &vcy;&ycy;&scy;&ocy;&kcy;&acy;&yacy;
+                                | Очень высокая
                             p
-                                | &Bcy;&ocy;&lcy;&softcy;&shcy;&iecy; 6 &tcy;&rcy;&iecy;&ncy;&icy;&rcy;&ocy;&vcy;&ocy;&kcy; &vcy; &ncy;&iecy;&dcy;&iecy;&lcy;&yucy; &icy; &fcy;&icy;&zcy;&icy;&chcy;&iecy;&scy;&kcy;&acy;&yacy; &rcy;&acy;&bcy;&ocy;&tcy;&acy;
+                                | Больше 6 тренировок в неделю и физическая работа 
         button.submit(name='submit', type='submit', disabled='')
-            | &Rcy;&acy;&scy;&scy;&chcy;&icy;&tcy;&acy;&tcy;&softcy;
+            | Расчитать
         button.reset(name='reset', type='reset', disabled='')
             span
-                | &Ocy;&chcy;&icy;&scy;&tcy;&icy;&tcy;&softcy; &pcy;&ocy;&lcy;&yacy; &icy; &rcy;&acy;&scy;&chcy;&iocy;&tcy;
+                | Очистить поля и расчет
+        
+    script(type="module")
+        include ../../src/calories/application.js
