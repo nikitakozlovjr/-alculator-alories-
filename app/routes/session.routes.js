@@ -1,6 +1,6 @@
 import Express from "express";
 import UserController from '../controllers/user.controller.js';
-import findUser from "../utils/findUser.js";
+import findUser from "../utils/users/findUser.js";
 import Encrypt from "../../Encrypt.js";
 
 const router = new Express();
