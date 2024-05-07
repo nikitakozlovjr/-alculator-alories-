@@ -1,0 +1,10 @@
+extends ../layout/app.pug
+
+block content 
+    if currentUser.isGuest()
+        p Сохранять расчеты могут только авторизованные пользователи
+        a(href="/session/extrance") Войти
+        a(href="/session/new") Зарегистрироваться 
+    else 
+        form(action="#", method="post")
+            button(type="submit") Сохранить расчет 
