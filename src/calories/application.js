@@ -37,7 +37,6 @@ const elements = {
 };
 
 const render = (state) => {
-    console.log(checkValuesInput(state))
     if(state.validate) {
         elements.submit.disabled = false;
     };

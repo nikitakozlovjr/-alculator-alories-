@@ -1,84 +1,159 @@
 extends ../layout/app.pug
 
+//- <div class="form-check">
+//-   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+//-   <label class="form-check-label" for="flexRadioDefault1">
+//-     Радио по умолчанию
+//-   </label>
+//- </div>
+//- <div class="form-check">
+//-   <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+//-   <label class="form-check-label" for="flexRadioDefault2">
+//-     Радио выбранное по умолчанию
+//-   </label>
+//- </div>
+
+
+//- <div class="form-floating mb-3">
+//-   <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+//-   <label for="floatingInput">Адрес электронной почты</label>
+//- </div>
+//- <div class="form-floating">
+//-   <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+//-   <label for="floatingPassword">Пароль</label>
+//- </div>
+
 block content 
-    article
-        h1
-            | Счетчик калориев
-        form.formParam(name='counter', action='#', method='post')
-            legend
-                | Пол
-            ul(data-name='gender')
-                li
-                    input(type='radio', name='gender', data-gender='man', checked='checked')
-                    label
-                        | Мужчина
-                li
-                    input(type='radio', name='gender', data-gender='women')
-                    label
-                    | Женщина
-            fieldset
-                legend
-                    | Физические параметры
-                div
-                    label Возраст 
-                    span  (лет)
-                div
-                    input(name='age', type='text', placeholder='0')
-                    
-                div
-                    label Рост
-                    span  (см)
-                div
-                    input(name='height', type='text', placeholder='0')
-                div
-                    label Вес
-                    span  (кг)
-                div
-                    input(name='weight', type='text', placeholder='0')
-            fieldset
-                legend
-                    | Физическая активность
-                ul
-                    li
-                        div
-                            input.active(name='active', type='radio', data-active='min', checked='checked')
-                            label
-                                | Минимальная
-                            p
-                                | Сидячая работа и нет нагрузок
-                    li
-                        div
-                            input(name='active', type='radio', data-active='low', checked='checked')
-                            label
-                                | Низкая
-                            p
-                                | Редкие нерегулярные тренировки, активность в быту
-                    li
-                        div
-                            input(name='active', type='radio', data-active='average')
-                            label
-                                | Средняя
-                            p
-                                | Тренировки 3 - 5 раз в неделю
-                    li
-                        div
-                            input(name='active', type='radio', data-active='high')
-                            label
-                                | Высокая
-                            p
-                                | Тренировки 6 - 7 раз в неделю
-                    li
-                        div
-                            input(name='active', type='radio', data-active='huge')
-                            label
-                                | Очень высокая
-                            p
-                                | Больше 6 тренировок в неделю и физическая работа 
-        button.submit(name='submit', type='submit', disabled='')
-            | Расчитать
-        button.reset(name='reset', type='reset', disabled='')
-            span
-                | Очистить поля и расчет
+
+    h3 Счетчик Калориев
+    form(action="/calories/calculation", method="post") 
+        .form-group
+            h5 Пол
+            .form-check
+                input.form-check-input(type="radio" id="flexRadioDefault1" name="man")
+                label.form-check-label(for="flexRadioDefault1") Мужчина
+            .form-check
+                input.form-check-input(type="radio" id="flexRadioDefault1" name="women")
+                label.form-check-label(for="flexRadioDefault1") Женщина
+        .form.group 
+            h5 Физические параметры
+            .form-floating.mb-3 
+                input.form-control(type="text" name="age" id="floatingInput" placeholder="Ваш возраст")
+                label(for="floatingInput") Возраст (лет)
+            .form-floating.mb-3 
+                input.form-control(type="text" name="height" id="floatingInput" placeholder="Ваш рост")
+                label(for="floatingInput") Рост (см)
+            .form-floating.mb-3 
+                input.form-control(type="text" name="weight" id="floatingInput" placeholder="Ваш вес")
+                label(for="floatingInput") Вес (кг)
+        .form-group
+            h5 Физическая активность
+            .form-check
+                input.form-check-input(type="radio" name="activeMin" id="flexRadioDefault1")
+                label.form-check-label(for="flexRadioDefault1") Минимальная
+                p Сидячая работа и нет нагрузок
+            .form-check
+                input.form-check-input(type="radio" name="activeLow" id="flexRadioDefault1" checked)
+                label.form-check-label(for="flexRadioDefault1") Низкая
+                p Редкие нерегулярные тренировки, активность в быту
+            .form-check
+                input.form-check-input(type="radio" name="activeAverage" id="flexRadioDefault1")
+                label.form-check-label(for="flexRadioDefault1") Средняя
+                p Тренировки 3 - 5 раз в неделю
+            .form-check
+                input.form-check-input(type="radio" name="activeHigh" id="flexRadioDefault1")
+                label.form-check-label(for="flexRadioDefault1") Высокая
+                p Тренировки 6 - 7 раз в неделю
+            .form-check
+                input.form-check-input(type="radio" name="activeHuge" id="flexRadioDefault1")
+                label.form-check-label(for="flexRadioDefault1") Очень выоская
+                p Больше 6 тренировок в неделю и физическая работа
+        .btn-toolbar(role="toolbar")
+            button.submit.btn.btn-primary.btn-lg.mr-2(name='submit', type='submit', disabled='' style="margin-right: 10px;") Расчитать
+            button.reset.btn.btn-secondary.btn-lg(name='reset', type='reset', disabled='') Очистить поля и расчет
         
     script(type="module")
         include ../../src/calories/application.js
+
+
+    //- article
+    //-     h1
+    //-         | Счетчик калориев
+    //-     form(action='calories/calculation', method='post')
+    //-         legend
+    //-             | Пол
+    //-         ul(data-name='gender')
+    //-             li
+    //-                 input(type='radio', name='genderMan', data-gender='man', checked='checked')
+    //-                 label
+    //-                     | Мужчина
+    //-             li
+    //-                 input(type='radio', name='genderWomen', data-gender='women')
+    //-                 label
+    //-                 | Женщина
+    //-         fieldset
+    //-             legend
+    //-                 | Физические параметры
+    //-             div
+    //-                 label Возраст 
+    //-                 span  (лет)
+    //-             div
+    //-                 input(name='age', type='text', placeholder='0')
+                    
+    //-             div
+    //-                 label Рост
+    //-                 span  (см)
+    //-             div
+    //-                 input(name='height', type='text', placeholder='0')
+    //-             div
+    //-                 label Вес
+    //-                 span  (кг)
+    //-             div
+    //-                 input(name='weight', type='text', placeholder='0')
+    //-         fieldset
+    //-             legend
+    //-                 | Физическая активность
+    //-             ul
+    //-                 li
+    //-                     div
+    //-                         input.active(name='activemMin', type='radio', data-active='min')
+    //-                         label
+    //-                             | Минимальная
+    //-                         p
+    //-                             | Сидячая работа и нет нагрузок
+    //-                 li
+    //-                     div
+    //-                         input(name='activeLow', type='radio', data-active='low', checked='checked')
+    //-                         label
+    //-                             | Низкая
+    //-                         p
+    //-                             | Редкие нерегулярные тренировки, активность в быту
+    //-                 li
+    //-                     div
+    //-                         input(name='activeAverage', type='radio', data-active='average')
+    //-                         label
+    //-                             | Средняя
+    //-                         p
+    //-                             | Тренировки 3 - 5 раз в неделю
+    //-                 li
+    //-                     div
+    //-                         input(name='activeHigh', type='radio', data-active='high')
+    //-                         label
+    //-                             | Высокая
+    //-                         p
+    //-                             | Тренировки 6 - 7 раз в неделю
+    //-                 li
+    //-                     div
+    //-                         input(name='activeHuge', type='radio', data-active='huge')
+    //-                         label
+    //-                             | Очень высокая
+    //-                         p
+    //-                             | Больше 6 тренировок в неделю и физическая работа 
+    //-         button.submit(name='submit', type='submit', disabled='')
+    //-             | Расчитать
+    //-         button.reset(name='reset', type='reset', disabled='')
+    //-             span
+    //-                 | Очистить поля и расчет
+        
+    //- script(type="module")
+    //-     include ../../src/calories/application.js
