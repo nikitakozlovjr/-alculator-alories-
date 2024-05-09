@@ -29,8 +29,6 @@ const checkValuesInput = (state) => {
 
 const elements = {
     inputs: document.querySelectorAll('[type="text"]'),
-    age: document.querySelector('[name="age"]'),
-    height: document.querySelector('[name="height"]'),
     weight: document.querySelector('[name="weight"]'),
     submit: document.querySelector('[name="submit"]'),
     reset: document.querySelector('[name="reset"]')
@@ -54,8 +52,6 @@ const render = (state) => {
 const app = () => {
     const state = {
         values: {
-            age: null,
-            height: null,
             weight: null
         },
         validate: false
