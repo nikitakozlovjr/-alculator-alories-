@@ -4,6 +4,7 @@ import userRoutes from './routes/user.routes.js';
 import postRouter from './routes/post.routes.js';
 import proteinRouter from './routes/protein.routes.js';
 import caloriesRouter from './routes/calories.routes.js';
+import balanceRouter from './routes/balance.routes.js';
 import sessionRoutes from './routes/session.routes.js';
 import methodOverride from 'method-override';
 import bodyParser from 'body-parser';
@@ -34,6 +35,7 @@ app.use('/users', userRoutes);
 app.use('/posts', postRouter);
 app.use('/calories', caloriesRouter);
 app.use('/protein', proteinRouter);
+app.use('/balance', balanceRouter);
 app.use(userRedirection);
 
 export default app;
