@@ -1,34 +1,39 @@
 extends ../layout/app.pug
 
-block content 
-    article
-        h1 Счетчик белка
-        form.formParam(name='counter', action='#', method='post')
-            fieldset
-                legend Физические параметры
-                div
-                    label Вес
-                    span кг
-                div
-                    input(name='weight', type='text', placeholder='0')
-            fieldset
-                legend Физичесская активность
-                ul
-                    li
-                        div
-                            input.active(name='active', type='radio', data-active='min', checked='checked')
-                            label Минимальная 
-                            p Сидячая работа и нет физических нагрузок
-                    li
-                        div
-                            input(name='active', type='radio', data-active='middle', checked='checked')
-                            label Средняя
-                            p Умеренная активность 2-3 раза в неделю
-                    li
-                        div
-                            input(name='active', type='radio', data-active='average')
-                            label Высокая
-                            p Интенсивные тренировки или физический труд
-        button.submit(name='submit', type='submit', disabled='') Рассчитать
-        button.reset(name='reset', type='reset', disabled='')
-            span Очистить поля и расчет
+block content
+    h3 Счетчик Калориев
+    form(action="#", method="post")
+        .form.group 
+            h5 Физические параметры
+            .form-floating.mb-3 
+                input.form-control(type="text" name="weight" id="floatingInput" placeholder="Ваш возраст")
+                label(for="floatingInput") Вес (кг)
+        .form-group
+            h5 Физическая активность
+            .form-check
+                input.form-check-input(type="radio" name="active" id="flexRadioDefault1" value="min")
+                label.form-check-label(for="flexRadioDefault1") Минимальная
+                p Сидячая работа и нет нагрузок
+            .form-check.active
+                input.form-check-input.checked(type="radio" name="active" id="flexRadioDefault1" value="low" checked)
+                label.form-check-label(for="flexRadioDefault1") Низкая
+                p Редкие нерегулярные тренировки, активность в быту
+            .form-check.active
+                input.form-check-input(type="radio" name="active" id="flexRadioDefault1" value="average")
+                label.form-check-label(for="flexRadioDefault1") Средняя
+                p Тренировки 3 - 5 раз в неделю
+            .form-check.active
+                input.form-check-input(type="radio" name="active" id="flexRadioDefault1" value="high")
+                label.form-check-label(for="flexRadioDefault1") Высокая
+                p Тренировки 6 - 7 раз в неделю
+            .form-check.active
+                input.form-check-input(type="radio" name="active" id="flexRadioDefault1" value="huge")
+                label.form-check-label(for="flexRadioDefault1") Очень выоская
+                p Больше 6 тренировок в неделю и физическая работа
+        .btn-toolbar(role="toolbar")
+            button.submit.btn.btn-primary.btn-lg.mr-2(name='submit', type='submit', disabled='' style="margin-right: 10px;") Расчитать
+            button.reset.btn.btn-secondary.btn-lg(name='reset', type='reset', disabled='') Очистить поля и расчет
+        
+    script(type="module")
+        include ../../src/protein/application.js
+    
