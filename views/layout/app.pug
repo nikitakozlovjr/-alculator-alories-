@@ -10,6 +10,13 @@ html
           .d-flex.flex-column.align-items-center.align-items-sm-start.px-3.pt-2.text-white.min-vh-100
             a.d-flex.align-items-center.pb-3.mb-md-0.me-md-auto.text-white.text-decoration-none(href='/')
               span.fs-5.d-none.d-sm-inline Клевер здоровья
+            if currentUser.isGuest()
+              a.btn.text-primary.border.w-100.mb-2(href='/entrance') Войти
+              a.btn.text-primary.border.w-100.mb-3(href='/log') Зарегистрироваться
+            else
+              a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.mb-3(href='/profile', data-bs-toggle='dropdown', aria-expanded='false')
+                img.rounded-circle(src='https://ob-kassa.ru/content/front/buhoskol_tmp1/images/reviews-icon.jpg', alt='hugenerd', width='30', height='30')
+                span.d-none.d-sm-inline.mx-1 Профиль
             ul#menu.nav.nav-pills.flex-column.mb-sm-auto.mb-0.align-items-center.align-items-sm-start
               li
                 a.nav-link.px-0.align-middle(href='/', data-bs-toggle='collapse')
@@ -40,16 +47,7 @@ html
                 a.nav-link.px-0.align-middle(href='/calculations', data-bs-toggle='collapse')
                   i.fs-4.bi-speedometer2
                   |  
-                  span.ms-1.d-none.d-sm-inline Мои расчеты
-            hr
-            .dropdown.pb-4
-            if currentUser.isGuest()
-              a.btn.text-primary.border.w-100.mb-2(href='/entrance') Войти
-              a.btn.text-primary.border.w-100.mb-3(href='/log') Зарегистрироваться
-            else
-              a#dropdownUser1.d-flex.align-items-center.text-white.text-decoration-none.mb-3(href='/profile', data-bs-toggle='dropdown', aria-expanded='false')
-                img.rounded-circle(src='https://ob-kassa.ru/content/front/buhoskol_tmp1/images/reviews-icon.jpg', alt='hugenerd', width='30', height='30')
-                span.d-none.d-sm-inline.mx-1 Профиль            
+                  span.ms-1.d-none.d-sm-inline Мои расчеты           
         .col.py-3
           block content
           
