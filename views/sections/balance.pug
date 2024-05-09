@@ -1,36 +1,33 @@
 extends ../layout/app.pug
 
-block content 
-    article
-        h1 Расчет водяного баланса
-        form.formParam(name='counter', action='#', method='post')
-            h2 Пол
-            ul(data-name='gender')
-                li
-                    input(type='radio', name='gender', data-gender='man', checked='checked')
-                    label Мужчина
-                li
-                    input(type='radio', name='gender', data-gender='women')
-                    label Женщина
-            fieldset
-                legend Физические параметры
-                div
-                    label Возраст
-                    span лет
-                div
-                    input(name='age', type='text', placeholder='0')
-                div
-                    label Рост
-                    span см
-                div
-                    input(name='height', type='text', placeholder='0')
-                div
-                    label Вес
-                    span кг
-                div
-                    input(name='weight', type='text', placeholder='0')
-        button.submit(name='submit', type='submit', disabled='')
-            | &Rcy;&acy;&scy;&scy;&chcy;&icy;&tcy;&acy;&tcy;&softcy;
-        button.reset(name='reset', type='reset', disabled='')
-            span
-                | &Ocy;&chcy;&icy;&scy;&tcy;&icy;&tcy;&softcy; &pcy;&ocy;&lcy;&yacy; &icy; &rcy;&acy;&scy;&chcy;&iocy;&tcy;
+block content
+
+    h3 Расчет водяного баланса
+    form(action="/calories/calculation", method="post") 
+        .form-group
+            h5 Пол
+            .form-check
+                input.form-check-input(type="radio" id="flexRadioDefault1" name="gender" value="man")
+                label.form-check-label(for="flexRadioDefault1") Мужчина
+            .form-check
+                input.form-check-input.checked(type="radio" id="flexRadioDefault1" name="gender" value="women" checked)
+                label.form-check-label(for="flexRadioDefault1") Женщина
+        .form.group 
+            h5 Физические параметры
+            .form-floating.mb-3 
+                input.form-control(type="text" name="age" id="floatingInput" placeholder="Ваш возраст")
+                label(for="floatingInput") Возраст (лет)
+            .form-floating.mb-3 
+                input.form-control(type="text" name="height" id="floatingInput" placeholder="Ваш рост")
+                label(for="floatingInput") Рост (см)
+            .form-floating.mb-3 
+                input.form-control(type="text" name="weight" id="floatingInput" placeholder="Ваш вес")
+                label(for="floatingInput") Вес (кг)
+        .btn-toolbar(role="toolbar")
+            button.submit.btn.btn-primary.btn-lg.mr-2(name='submit', type='submit', disabled='' style="margin-right: 10px;") Расчитать
+            button.reset.btn.btn-secondary.btn-lg(name='reset', type='reset', disabled='') Очистить поля и расчет
+        
+    script(type="module")
+        include ../../src/protein/application.js
+    
+    
