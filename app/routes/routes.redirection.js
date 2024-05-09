@@ -1,5 +1,7 @@
 import Express from 'express';
 import PostsController from '../controllers/post.controller.js';
+import CalculationController from '../controllers/calculation.controller.js';
+import calculationName from '../utils/calculations/calculationName.js';
 
 const router = new Express()
 
@@ -58,5 +60,16 @@ router.get('/postsusers', async (req, res) => {
     res.render('posts/usersPosts', data);
 });
 
+router.get('/calculations', async (req, res) => {
+    const { currentUser } = res.locals; 
+    const calculationsData = await new CalculationController().getCalculations(req, res);
+    const calculations = calculationsData.map((calculation) => {
+        calculation['name'] = calculationName[calculation['name']];
+        return calculation;
+    });
+
+    const data = {title: "Советы пользователей", currentUser, calculations};
+    res.render('sections/calculations', data);
+});
 
 export default router;
