@@ -6,13 +6,23 @@ block content
         a.btn.btn-primary.btn-lg(href="/entrance" style="margin-right: 10px;") Войти
         a.btn.btn-secondary.btn-lg(href="/log") Зарегистрироваться
     else    
-        if posts.length === 0
+        if calculations.length === 0
             p У вас еще нет расчетов
         else
             for calculation in calculations
                 div.card.mb-3
-                    div.card-header.text-primary.fw-normal.fs-3 #{post.title}
+                    div.card-header.text-primary.fw-normal.fs-3 #{calculation.name}
                     div.card-body
-                        h5.card-title #{post.description}
-                        p.card-text Автор: #{post.author}
-                        a.btn.btn-primary(href=`/posts/${post.id}`) Читать 
+                        p.card-text.fs-5
+                            | Для того, чтобы оставаться в такой же форме Вам требуется
+                            span.fs-5.text-primary  #{calculation.normal}
+                            |  #{calculationName} в день
+                        p.card-text.fs-5
+                            | Для того, чтобы похудеть Вам требуется употрелять не выше
+                            span.fs-5.text-primary  #{calculation.low}
+                            |  #{calculationName} в день
+                        p.card-text.fs-5
+                            | Для того, чтобы набрать вес Вам требуется
+                            span.fs-5.text-primary  #{calculation.more}
+                            |  #{calculationName} в день                        
+                        a.btn.btn-danger(href=`#`) Удалить 
