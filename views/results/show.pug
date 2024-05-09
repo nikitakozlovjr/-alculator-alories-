@@ -7,7 +7,7 @@ block content
             p.card-text.fs-5
                 | Для того, чтобы оставаться в такой же форме Вам требуется
                 span.fs-5.text-primary  #{calculations.normal}
-                |  калориев в день
+                |  #{calculationName} в день
     
     .card.mb-3
         .card-header.text-primary.fw-normal.fs-3 Снижение веса
@@ -15,7 +15,7 @@ block content
             p.card-text.fs-5
                 | Для того, чтобы похудеть Вам требуется употрелять не выше 
                 span.fs-5.text-primary  #{calculations.low}
-                |  калориев в день
+                |  #{calculationName} в день
 
     .card.mb-3 
         .card-header.text-primary.fw-normal.fs-3 Набор веса
@@ -23,7 +23,7 @@ block content
             p.card-text.fs-5
                 | Для того, чтобы набрать вес Вам требуется
                 span.fs-5.text-primary  #{calculations.more}
-                |  калориев в день
+                |  #{calculationName} в день
     
     if currentUser.isGuest()
         p.fs-5.text-danger Сохранять расчеты могут только авторизованные пользователи

@@ -12,7 +12,7 @@ router.post('/calculation', (req, res) => {
     const genderCoefficient = genderCoefficients[gender];
     const activeCoefficient = activeCoefficients[active];
     const calculations = getCalculation(activeCoefficient, weight, height, age, genderCoefficient);
-    const data = {title: "Ваша норма калориев", currentUser, calculations};
+    const data = {title: "Ваша норма калориев", currentUser, calculations, calculationName: 'калориев'};
     res.render('results/show', data)
 });
 
